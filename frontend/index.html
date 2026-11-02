@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <p class="eyebrow">DATA EXPLORER</p>
+            <h1>CSV Analyzer</h1>
+            <p class="subtitle">Upload a dataset, understand it, search values and create charts.</p>
+        </header>
+
+        <section class="panel upload-panel">
+            <h2>Upload your CSV</h2>
+            <div class="upload-row">
+                <input type="file" id="file" accept=".csv,text/csv">
+                <button id="upload">Upload & Analyze</button>
+            </div>
+            <p id="status" class="status" aria-live="polite">Choose a CSV file to get started.</p>
+        </section>
+
+        <section id="results-section" hidden>
+            <h2>Dataset overview</h2>
+            <div class="stats-grid">
+                <article class="stat-card"><span>Total rows</span><strong id="total-rows">0</strong></article>
+                <article class="stat-card"><span>Total columns</span><strong id="total-columns">0</strong></article>
+                <article class="stat-card"><span>Missing values</span><strong id="missing-values">0</strong></article>
+                <article class="stat-card"><span>Duplicate rows</span><strong id="duplicate-rows">0</strong></article>
+            </div>
+
+            <section class="panel">
+                <h2>Column information</h2>
+                <div id="column-info" class="column-info"></div>
+            </section>
+
+            <section class="panel">
+                <h2>Data preview</h2>
+                <div class="table-wrap">
+                    <table id="data-table"></table>
+                </div>
+            </section>
+
+            <section class="panel">
+                <h2>Automatic charts</h2>
+                <div id="plot-container" class="chart-grid"></div>
+            </section>
+
+            <section class="panel feature-section">
+                <h2>Find a value</h2>
+                <p class="help">Search for an exact value in any column and count how often it occurs.</p>
+                <div class="controls">
+                    <select id="search-column" aria-label="Search column">
+                        <option value="">Select a column</option>
+                    </select>
+                    <input type="text" id="search-value" placeholder="Enter value to find">
+                    <button id="search-button">Find value</button>
+                </div>
+                <p id="search-result" class="status" aria-live="polite"></p>
+            </section>
+
+            <section class="panel feature-section">
+                <h2>Create a custom plot</h2>
+                <p class="help">Choose the chart type and the columns you want to compare.</p>
+                <div class="controls">
+                    <select id="chart-type" aria-label="Chart type">
+                        <option value="histogram">Histogram</option>
+                        <option value="bar">Bar chart</option>
+                        <option value="boxplot">Box plot</option>
+                        <option value="scatter">Scatter plot</option>
+                    </select>
+                    <select id="plot-column" aria-label="X or main column">
+                        <option value="">Select main column</option>
+                    </select>
+                    <select id="plot-y-column" aria-label="Y column">
+                        <option value="">Select Y column (scatter only)</option>
+                    </select>
+                    <button id="generate-plot">Generate plot</button>
+                </div>
+                <p id="plot-status" class="status" aria-live="polite"></p>
+                <div id="custom-plot-container"></div>
+            </section>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
