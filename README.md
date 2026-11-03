@@ -80,3 +80,10 @@ If Live Server uses another port, add that exact origin to the list in `src/app.
 - The current app stores the latest uploaded CSV path and analysis state in server memory. It is intended as a local, single-user project, not a multi-user deployment.
 - CSV uploads are limited to 50 MB.
 - Uploaded CSV files are stored in the operating system's temporary directory. Generated charts are stored in `plots/`.
+# CSV Analyzer
+A tool to process and analyze CSV files.
+
+## Project Structure
+* `analyze.py` - Core analysis script
+* `server.js` - Backend server handler
+* `frontend/` - UI web interface components
